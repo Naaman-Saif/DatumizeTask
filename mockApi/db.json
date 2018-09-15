@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "name": "Alice"
+    },
+    {
+      "id": 3,
+      "name": "Bob"
+    },
+    {
+      "id": 4,
+      "name": "Naaman Saif"
+    },
+    {
+      "id": 5,
+      "name": "Naaman Saif"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "Admin"
+    },
+    {
+      "id": 2,
+      "name": "Editor"
+    },
+    {
+      "id": 3,
+      "name": "Viewer"
+    },
+    {
+      "id": 4,
+      "name": "KuchBhi"
+    },
+    {
+      "id": 5,
+      "name": "KuchBhi"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Trip to space"
+    },
+    {
+      "id": 2,
+      "name": "Assembly Ikea furniture"
+    },
+    {
+      "id": 3,
+      "name": "Datumize Zentral"
+    },
+    {
+      "id": 4,
+      "name": "KuchTou"
+    },
+    {
+      "id": 5,
+      "name": "KuchAur"
+    }
+  ]
+}
