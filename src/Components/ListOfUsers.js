@@ -35,9 +35,6 @@ const styles = theme => ({
 });
 
 class CustomizedTable extends React.Component {
-    componentWillMount = () => {
-        console.log(this.props);
-    }
     render() {
         const { classes } = this.props;
         return (
@@ -56,12 +53,12 @@ class CustomizedTable extends React.Component {
                             {this.props.user.users.map(row => {
                                 return (
                                     <TableRow className={classes.row} key={row.id}>
-                                        <CustomTableCell component="th" scope="row">
+                                        <CustomTableCell id="userId" component="th" scope="row">
                                             {row.id}
                                         </CustomTableCell>
-                                        <CustomTableCell >{row.name}</CustomTableCell>
-                                        <CustomTableCell>{this.props.user.roles[row.id - 1].name}</CustomTableCell>
-                                        <CustomTableCell>{this.props.user.projects[row.id - 1].name}</CustomTableCell>
+                                        <CustomTableCell id="userName">{row.name}</CustomTableCell>
+                                        <CustomTableCell id="userRoles">{this.props.user.roles[row.id - 1].name}</CustomTableCell>
+                                        <CustomTableCell id="userProjects">{this.props.user.projects[row.id - 1].name}</CustomTableCell>
                                     </TableRow>
                                 );
                             })}

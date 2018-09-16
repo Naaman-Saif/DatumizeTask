@@ -17,7 +17,8 @@ class Inputs extends Component {
             name: '',
             role: '',
             project: '',
-            openError: false
+            openError: false,
+            confirm:0
         }
         this.onChange = this.onChange.bind(this)
         this.AddUser = this.AddUser.bind(this);
@@ -42,9 +43,16 @@ class Inputs extends Component {
     }
     AddUser = () => {
         const id = this.props.userData.data.users.length + 1;
+        if(!this.state.name||!this.state.role||!this.state.project){
+            return (
+                this.setState({
+                    notFilled:!this.state.notFilled
+                })
+            )
+        }
         for (let i = 0; i < this.props.userData.data.users.length; i++) {
-            if (this.state.name == this.props.userData.data.users[i].name) {
-                if (this.state.project == this.props.userData.data.projects[i].name) {
+            if (this.state.name === this.props.userData.data.users[i].name) {
+                if (this.state.project === this.props.userData.data.projects[i].name) {
                     document.getElementById('name').focus();
                     return (
                         this.setState({
@@ -72,8 +80,15 @@ class Inputs extends Component {
             }
         }
         this.props.postUserData(data);
-        window.location.reload();
-        console.log(data);
+        if(this.props.userData.isPosting === false){
+            this.props.fetchUserData();
+            this.setState({
+                name:'',
+                role:'',
+                project:''
+            })
+            document.getElementById('name').focus();
+        }
     }
     render() {
         const { classes } = this.props;
@@ -112,19 +127,29 @@ class Inputs extends Component {
                         value={this.state.project}
                         onKeyPress={this.onEnter}
                     />
-                    <Button variant="fab" color="primary" mini aria-label="Add" onClick={this.AddUser} className={classes.addbutton}>
+                    <Button id="addUser" variant="fab" color="primary" mini aria-label="Add" onClick={this.AddUser} className={classes.addbutton}>
                         <AddIcon />
                     </Button>
                 </div>
-                {this.props.userData.isFetching === false ? <ListOfUsers user={this.props.userData.data} /> : <div className={classes.progressContainer}><CircularProgress className={classes.progress} style={{ color: purple[500] }} thickness={7} /></div>}
+                {this.props.userData.isFetching === false || this.props.userData.isPosting === true ? <ListOfUsers user={this.props.userData.data} /> : <div className={classes.progressContainer}><CircularProgress className={classes.progress} style={{ color: purple[500] }} thickness={7} /></div>}
                 <Snackbar
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    id="errorProject"
                     open={this.state.openError}
                     onClose={this.handleCloseError}
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
                     message={<span id="message-id">Sorry! One user can only be assigned one role per project.</span>}
+                />
+                <Snackbar
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    open={this.state.notFilled}
+                    id="noDataError"
+                    ContentProps={{
+                        'aria-describedby': 'message-id',
+                    }}
+                    message={<span id="message-id">There needs to be some data in all the fields.</span>}
                 />
             </div>
         );

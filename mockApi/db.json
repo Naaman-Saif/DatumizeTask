@@ -11,14 +11,6 @@
     {
       "id": 3,
       "name": "Bob"
-    },
-    {
-      "id": 4,
-      "name": "Naaman Saif"
-    },
-    {
-      "id": 5,
-      "name": "Naaman Saif"
     }
   ],
   "roles": [
@@ -33,14 +25,6 @@
     {
       "id": 3,
       "name": "Viewer"
-    },
-    {
-      "id": 4,
-      "name": "KuchBhi"
-    },
-    {
-      "id": 5,
-      "name": "KuchBhi"
     }
   ],
   "projects": [
@@ -55,14 +39,6 @@
     {
       "id": 3,
       "name": "Datumize Zentral"
-    },
-    {
-      "id": 4,
-      "name": "KuchTou"
-    },
-    {
-      "id": 5,
-      "name": "KuchAur"
     }
   ]
 }

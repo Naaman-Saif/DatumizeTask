@@ -3,7 +3,8 @@ import {
     USER_DATA_FAIL,
     USER_DATA_SUCCESS,
     USER_POST_FAIL,
-    USER_DATA_POSTING
+    USER_DATA_POSTING,
+    USER_POST_SUCCESS
 } from '../Utils/ActionTypes';
 const initialState = {
     isFetching : null,
@@ -40,18 +41,20 @@ export default (state = initialState, action) => {
             });
         case USER_DATA_POSTING:
             return Object.assign({},state,{
-                isFetching:false,
-                data:null,
                 hasError:false,
                 errorMessage:null,
                 isPosting:true
             })
         case USER_POST_FAIL:
             return Object.assign({},state,{
-                isFetching:null,
-                data:null,
                 hasError:true,
                 errorMessage:action.err,
+                isPosting:false
+            })
+        case USER_POST_SUCCESS:
+            return Object.assign({},state,{
+                hasError:null,
+                errorMessage:null,
                 isPosting:false
             })
         default:
